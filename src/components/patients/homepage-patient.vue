@@ -59,9 +59,6 @@
                         {{publication.description}}
                       </v-card-text>
                       <div class="d-flex align-center ml-4">
-                        <v-chip-group  v-for="tag in tags" :key="tag">
-                          <v-chip v-if="tag.publication.id === publication.id" color="primary" outlined>{{tag.text}}</v-chip>
-                        </v-chip-group>
                       </div>
                     </div>
                   </v-col>
@@ -172,12 +169,9 @@ export default {
     try {
       const response = await PublicationsApiService.getAll();
       const response2 = await PsychologistsApiService.getAll();
-      const response3 = await PublicationsApiService.getTags();
       const response4 = await PatientApiService.getById(this.userId);
       this.publications = response.data;
       this.psychologists = response2.data;
-      this.tags = response3.data;
-      console.log(this.tags);
       this.loginData = response4.data;
     }
     catch (e)
