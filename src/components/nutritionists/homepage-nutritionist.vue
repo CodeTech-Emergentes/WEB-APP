@@ -70,10 +70,8 @@
                   no-gutters
               >
                 <v-avatar size="40">
-                  <img
-                      alt="user"
-                      :src="publication.nutritionist.img"
-                  >
+                  <v-img alt="user" src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png"
+                  ></v-img>
                 </v-avatar>
                 <p class="ml-2 mt-4">{{publication.nutritionist.name}}</p>
               </v-row>
@@ -112,7 +110,7 @@
         </v-card>
         <v-col  sm="4" md="2" lg="12" v-for="nutritionist in nutritionists" :key="nutritionist">
           <v-card max-height="300" max-width="200" class="mx-auto mb-5" >
-            <v-img aspect-ratio="14:9" height="150" width="200" class="white--text align-end" :src="nutritionist.img">
+            <v-img aspect-ratio="14:9" height="150" width="200" class="white--text align-end" contain src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png">
             </v-img>
             <v-card-subtitle class="pb-0">
               {{nutritionist.name}}
@@ -135,7 +133,7 @@
         <v-card>
           <v-col align="center">
             <v-avatar width="100" height="100">
-              <v-img :src="selectedNutritionist.img"></v-img>
+              <v-img src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png"></v-img>
             </v-avatar>
           </v-col>
           <v-card-title class="justify-center">{{ selectedNutritionist.name }}</v-card-title>
@@ -179,7 +177,7 @@ export default {
   name: "homepage-nutritionist",
   data: () => ({
     items: [
-      {text: 'Patients', routeName:'dashboard_psycho'},
+      {text: 'Patients', routeName:'dashboard_nutritionist'},
       {text:'Help Center', routeName:'centro de ayuda'},
       {text:'Guide', routeName:'video-call'}
     ],

@@ -3,11 +3,11 @@
     <v-row>
       <v-col cols="12" sm="6">
         <v-card  class="mx-auto" max-width="400">
-          <v-img class="align-end" height="200px" src="https://d2lcsjo4hzzyvz.cloudfront.net/blog/wp-content/uploads/2020/10/01100423/Cuándo-ir-al-psicólogo-.jpg">
+          <v-img class="align-end" height="200px" contain src="https://img.freepik.com/premium-vector/nutritionist-she-smiled-brightly-has-shown-healthy-fruits-vegetables-concept-health-care-diet_610956-55.jpg?w=2000">
           </v-img>
           <v-card-title class="justify-center">Nutritionist</v-card-title>
           <v-card-text class="text--primary">
-            Join the leading online therapy platform and help thousands of people regain the emotional stability they need for their daily lives.
+            Join the leading online therapy platform and help thousands of people take care of their diet to improve their health and create diets and nutritional plans adapted to their needs.
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
