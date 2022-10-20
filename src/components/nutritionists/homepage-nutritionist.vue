@@ -72,10 +72,10 @@
                 <v-avatar size="40">
                   <img
                       alt="user"
-                      :src="publication.psychologist.img"
+                      :src="publication.nutritionist.img"
                   >
                 </v-avatar>
-                <p class="ml-2 mt-4">{{publication.psychologist.name}}</p>
+                <p class="ml-2 mt-4">{{publication.nutritionist.name}}</p>
               </v-row>
             <v-divider></v-divider>
             <v-card-title>{{publication.title}}</v-card-title>
@@ -103,26 +103,26 @@
 
 
     <v-col lg="2">
-      <!--CARDS PSICÓLOGOS-->
+      <!--CARDS NUTRICIONISTAS-->
       <v-row>
         <v-card max-width="220" class="mx-auto">
           <v-card-title class=" text-subtitle-1 text--primary text-uppercase font-weight-bold">
-            New Nutritionists
+            New nutritionists
           </v-card-title>
         </v-card>
-        <v-col  sm="4" md="2" lg="12" v-for="psychology in psychologists" :key="psychology">
+        <v-col  sm="4" md="2" lg="12" v-for="nutritionist in nutritionists" :key="nutritionist">
           <v-card max-height="300" max-width="200" class="mx-auto mb-5" >
-            <v-img aspect-ratio="14:9" height="150" width="200" class="white--text align-end" :src="psychology.img">
+            <v-img aspect-ratio="14:9" height="150" width="200" class="white--text align-end" :src="nutritionist.img">
             </v-img>
             <v-card-subtitle class="pb-0">
-              {{psychology.name}}
+              {{nutritionist.name}}
             </v-card-subtitle>
             <v-card-text class="text--primary">
-              <div>{{ psychology.email }}</div>
+              <div>{{ nutritionist.email }}</div>
             </v-card-text>
             <!-- BOTONES CARDS-->
             <v-card-actions>
-              <v-btn color="primary" text @click="psychologistDialog(psychology)">More</v-btn>
+              <v-btn color="primary" text @click="nutritionistDialog(nutritionist)">More</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -130,17 +130,17 @@
     </v-col>
 
     <template>
-      <!--DIALOG INFO PSICOLOGO SELECCIONADO-->
-      <v-dialog v-model="dialogInfo" width="400" v-if="selectedPsychologist!=null" persistent>
+      <!--DIALOG INFO NUTRICIONISTA SELECCIONADO-->
+      <v-dialog v-model="dialogInfo" width="400" v-if="selectedNutritionist!=null" persistent>
         <v-card>
           <v-col align="center">
             <v-avatar width="100" height="100">
-              <v-img :src="selectedPsychologist.img"></v-img>
+              <v-img :src="selectedNutritionist.img"></v-img>
             </v-avatar>
           </v-col>
-          <v-card-title class="justify-center">{{ selectedPsychologist.name }}</v-card-title>
-          <v-card-subtitle class="text-center">CMP: {{ selectedPsychologist.cmp }}</v-card-subtitle>
-          <v-card-text class="text-justify">{{ selectedPsychologist.about }}</v-card-text>
+          <v-card-title class="justify-center">{{ selectedNutritionist.name }}</v-card-title>
+          <v-card-subtitle class="text-center">CMP: {{ selectedNutritionist.cmp }}</v-card-subtitle>
+          <v-card-text class="text-justify">{{ selectedNutritionist.about }}</v-card-text>
           <v-container>
             <v-layout>
               <v-flex>
@@ -173,10 +173,10 @@
 <script>
 
 import PublicationsApiService from "../../core/services/publications-api-service"
-import PsychologistsApiService from "../../core/services/nutritionists-api.service"
+import NutritionistsApiService from "../../core/services/nutritionists-api.service"
 
 export default {
-  name: "homepage-psychologist",
+  name: "homepage-nutritionist",
   data: () => ({
     items: [
       {text: 'Patients', routeName:'dashboard_psycho'},
@@ -192,7 +192,7 @@ export default {
       'Schedule with our new nutritionists!'
     ],
     publications: [],
-    psychologists: [],
+    nutritionists: [],
     loginData: {},
     snackbar: false,
     message: '',
@@ -201,7 +201,7 @@ export default {
     dialog: false,
     dialogInfo: false,
     dialogTag: false,
-    selectedPsychologist: null,
+    selectedNutritionist: null,
 
     date: new Date().toISOString(),
 
@@ -237,7 +237,7 @@ export default {
     this.userId = this.loginData.id;
     console.log(this.loginData)
     this.retrievePublications();
-    this.retrievePsychologists();
+    this.retrieveNutritionists();
   },
 
 
@@ -253,17 +253,17 @@ export default {
        });
     },
 
-    retrievePsychologists(){
-      PsychologistsApiService.getAll()
+    retrieveNutritionists(){
+      NutritionistsApiService.getAll()
           .then(response => {
-            this.psychologists = response.data;
+            this.nutritionists = response.data;
             console.log(response.data);
           })
           .catch(e=>{
             console.log(e);
           });
 
-      PsychologistsApiService.getById(this.userId)
+          NutritionistsApiService.getById(this.userId)
           .then(response => {
             this.loginData = response.data;
             console.log(response.data);
@@ -338,9 +338,9 @@ export default {
       this.publications.splice(this.deletedIndex, 1);
     },
 
-    psychologistDialog(psychologist){
-      console.log('psychologistDialog psychologist:', psychologist);
-      this.selectedPsychologist = psychologist;
+    nutritionistDialog(nutritionist){
+      console.log('nutritionistDialog nutritionist:', nutritionist);
+      this.selectedNutritionist = nutritionist;
       this.dialogInfo = true;
     },
 

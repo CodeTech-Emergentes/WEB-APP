@@ -97,7 +97,7 @@
             </v-col>
 
             <template>
-              <!--DIALOG INFO Psychologist selected-->
+              <!--DIALOG INFO Nutritionist selected-->
               <v-dialog v-model="dialog" width="600" v-if="actualSession!=null" persistent>
                 <v-card color=#03A9F4>
                   <v-form>
@@ -140,7 +140,7 @@
 import AppointmentApiService from "../../core/services/appointments-api.service"
 
 export default {
-  name: "psychologist-logbook",
+  name: "nutritionist-logbook",
   data: () => ({
     appointments: [],
     patientData: [],
@@ -231,7 +231,7 @@ export default {
         motive: this.motiveForm,
         personalHistory: this.personalHistoryForm,
         testRealized: this.testRealizedForm,
-        psychoNotes: "Notes",
+        nutritionistNotes: "Notes",
         treatment: this.treatmentForm}
       AppointmentApiService.updateAppointment(this.dataAppointment.id, requestAppointment);
       this.dialog = false;

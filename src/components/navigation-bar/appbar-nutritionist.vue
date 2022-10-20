@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: "AppBar-psycho",
+  name: "AppBar-nutritionist",
   data: () => ({
     links: [
       'Dashboard',
@@ -44,10 +44,10 @@ export default {
       'Updates',
     ],
     items: [
-      {text:'Home', icon:'mdi-home', routeName:'home-psycho'},
-      {text:'My Profile', icon:'mdi-account', routeName:'psychologist-profile'},
-      {text:'Appointment', icon:'mdi-calendar-range', routeName:'psychologist-appointments'},
-      {text:'Logout', icon:'mdi-logout', routeName:'psychologist-login'},
+      {text:'Home', icon:'mdi-home', routeName:'home-nutritionist'},
+      {text:'My Profile', icon:'mdi-account', routeName:'nutritionist-profile'},
+      {text:'Appointment', icon:'mdi-calendar-range', routeName:'nutritionist-appointments'},
+      {text:'Logout', icon:'mdi-logout', routeName:'nutritionist-login'},
     ],
     profile: [],
     drawer: false,
@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     redirectTo(router) {
-      if(router === 'psychologist-login') {
+      if(router ===     'nutritionist-login') {
         localStorage.removeItem("nutritionist")
         this.$router.push({name: router})
       } else {
@@ -73,7 +73,7 @@ export default {
     },
 
     redirectHome(id) {
-      this.$router.push({name: 'home-psycho' , params:{id: id}})
+      this.$router.push({name: 'home-nutritionist' , params:{id: id}})
     }
   }
 }

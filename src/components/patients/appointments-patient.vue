@@ -16,18 +16,18 @@
               <v-col cols="3">
                 <h3 class="ml-4 mr-auto">
                   <v-icon class="ml-auto" color="white">mdi-account</v-icon>
-                  Psychologist: {{getPsychologistName(appointment.psychoId)}}</h3>
+                  Nutritionist: {{getNutritionistName(appointment.nutritionistId)}}</h3>
               </v-col>
             </v-card-text>
           </v-card>
         </v-col>
         <v-col cols="2" class="align-content-center" style="display: grid">
-          <v-btn class="mr-6" @click="psychologistDialog(appointment.psychoId, appointment.id)">Details</v-btn>
+          <v-btn class="mr-6" @click="nutritionistDialog(appointment.nutritionistId, appointment.id)">Details</v-btn>
         </v-col>
       </v-row>
     </v-card>
     <template>
-      <!--DIALOG INFO PSICOLOGO SELECCIONADO-->
+      <!--DIALOG INFO NUTRICIONISTA SELECCIONADO-->
       <v-dialog v-model="dialogInfo" width="400" v-if="selectedAppointment!=null">
         <v-card>
           <v-card-actions class="justify-end">
@@ -153,19 +153,19 @@
 <script>
 
 import AppointmentApiService from '../../core/services/appointments-api.service'
-import PsychologistApiService from '../../core/services/nutritionists-api.service'
-import PsychologistsApiService from "../../core/services/nutritionists-api.service";
+import NutritionistApiService from '../../core/services/nutritionists-api.service'
+import NutritionistsApiService from "../../core/services/nutritionists-api.service";
 
 export default {
   name: "appointments-patient",
   data: () => ({
     scheduleDate: '',
     menu: false,
-    psychoId: "",
+    nutritionistId: "",
     schedules: [],
     dialogReSchedule: false,
     appointments: [],
-    psychologists: [],
+    nutritionists: [],
     userId: "",
     dialogInfo: false,
     dialog: false,
@@ -185,8 +185,8 @@ export default {
 
   async created() {
     this.userId = this.$route.params.id;
-    const responsePsychologist = await PsychologistApiService.getAll();
-    this.psychologists = responsePsychologist.data;
+    const responseNutritionist = await NutritionistApiService.getAll();
+    this.nutritionists = responseNutritionist.data;
     await this.retrieveAppointments();
     console.log(this.dialogInfo)
   },
@@ -207,7 +207,7 @@ export default {
       let dataAppointment = response.data;
       console.log(dataAppointment, dateToIso)
       let newDate = {
-        psychoNotes: dataAppointment.psychoNotes,
+        nutritionistNotes: dataAppointment.nutritionistNotes,
         scheduleDate: dateToIso.toISOString(),
         createdAt: dataAppointment.createdAt,
         motive: dataAppointment.motive,
@@ -220,17 +220,17 @@ export default {
       this.dialogSelected = false;
     },
 
-    getPsychologistName(id) {
-      return this.psychologists.find(psychologists => psychologists.id === id).name;
+    getNutritionistName(id) {
+      return this.nutritionists.find(nutritionists => nutritionists.id === id).name;
     },
 
     openReScheduleDialog(appointmentId) {
-      this.retrievePsychoSchedules(appointmentId);
+      this.retrieveNutritionistSchedules(appointmentId);
       this.dialogReSchedule = true;
     },
 
-    retrievePsychoSchedules(id) {
-      PsychologistsApiService.getScheduleFromNutritionist(id)
+    retrieveNutritionistSchedules(id) {
+      NutritionistsApiService.getScheduleFromNutritionist(id)
           .then(response => {
             this.schedules = response.data;
             console.log(response.data);
@@ -240,10 +240,10 @@ export default {
           });
     },
 
-    async psychologistDialog(psychoId, idAppointment){
+    async nutritionistDialog(nutritionistId, idAppointment){
       this.appointmentId = idAppointment;
-      this.psychoId = psychoId;
-      const response = await PsychologistApiService.getById(psychoId);
+      this.nutritionistId = nutritionistId;
+      const response = await NutritionistApiService.getById(nutritionistId);
       this.selectedAppointment = response.data;
       this.dialogInfo = true;
     },
@@ -279,7 +279,7 @@ export default {
       }
       else
       {
-        window.open(appointment.psychoNotes);
+        window.open(appointment.nutritionistNotes);
       }
     }
   },

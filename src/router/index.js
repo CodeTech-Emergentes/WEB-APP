@@ -4,8 +4,8 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home_psycho',
-    name: 'home-psycho',
+    path: '/home_nutritionist',
+    name: 'home-nutritionist',
     component: () => import('../components/nutritionists/homepage-nutritionist')
   },
   {
@@ -20,13 +20,13 @@ const routes = [
     component: () => import('../components/patients/patient-profile')
   },
   {
-    path: '/home_psycho/profile_psycho',
-    name: 'psychologist-profile',
+    path: '/home_nutritionist/profile_nutritionist',
+    name: 'nutritionist-profile',
     component: () => import('../components/nutritionists/nutritionist-profile')
   },
   {
     path: '/dashboard_patient',
-    name: 'dashboard_psycho',
+    name: 'dashboard_nutritionist',
     component: () => import('../components/nutritionists/patient-dashboard')
   },
   {
@@ -48,18 +48,18 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/dashboard_psycho',
+    path: '/dashboard_nutritionist',
     name: 'dashboard_patient',
-    component: ()=> import('../components/patients/list-psychologists')
+    component: ()=> import('../components/patients/list-nutritionists')
   },
   {
-    path: '/login_psycho',
-    name: 'psychologist-login',
+    path: '/login_nutritionist',
+    name: 'nutritionist-login',
     component: () => import('../components/nutritionists/login-nutritionist')
   },
   {
-    path: '/register_psycho',
-    name: 'psychologist-register',
+    path: '/register_nutritionist',
+    name: 'nutritionist-register',
     component: () => import('../components/nutritionists/register-nutritionist')
   },
   {
@@ -88,13 +88,13 @@ const routes = [
     component: () => import('../components/patients/patient-publication')
   },
   {
-    path: '/logbook_psychologist/patient',
-    name: 'psychologist-logbook',
+    path: '/logbook_nutritionist/patient',
+    name: 'nutritionist-logbook',
     component: ()=> import('../components/nutritionists/nutritionist-logbook')
   },
   {
-    path: '/appointments-psycho',
-    name: 'psychologist-appointments',
+    path: '/appointments-nutritionist',
+    name: 'nutritionist-appointments',
     component: ()=> import('../components/nutritionists/appointments-nutritionist')
   },
   {

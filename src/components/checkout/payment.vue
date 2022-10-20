@@ -8,8 +8,8 @@
               <v-card-title class="ml-5" style="font-size:2em">Detalles de tu Cita</v-card-title>
               <v-row class="mb-2">
                 <v-col cols="12" md="9">
-                  <v-card-title class="ml-10 mr-10 mb-2">TERAPEUTA</v-card-title>
-                  <v-card-subtitle class="ml-10" style="font-size:18px">{{psychologists.name}}</v-card-subtitle>
+                  <v-card-title class="ml-10 mr-10 mb-2">NUTRICIONISTA</v-card-title>
+                  <v-card-subtitle class="ml-10" style="font-size:18px">{{nutritionists.name}}</v-card-subtitle>
                   <v-card-title class="ml-10 mr-10 mb-2">NOMBRE DEL PACIENTE</v-card-title>
                   <v-card-subtitle class="ml-10" style="font-size:18px">{{loginData.firstName +" "+ loginData.lastName}}</v-card-subtitle>
                   <v-card-title class="ml-10 mr-10 mb-2">HORARIO</v-card-title>
@@ -48,7 +48,7 @@
 <script>
 import { StripeCheckout } from '@vue-stripe/vue-stripe';
 import PatientApiService from "../../core/services/patient-api-service";
-import PsychologistsApiService from "../../core/services/nutritionists-api.service";
+import NutritionistsApiService from "../../core/services/nutritionists-api.service";
 export default {
   name: "payment",
   components: {
@@ -67,28 +67,28 @@ export default {
       successURL: 'http://localhost:8080/',
       cancelURL: 'http://localhost:8080/',
 
-      psychologists: [],
+      nutricionists: [],
       loginData: [],
       schedules: [],
       userId: 0,
-      psychoId: 0,
+      nutricionistId: 0,
       scheduleId: 0,
     };
   },
 
   async created() {
     this.userId = this.$route.params.id;
-    this.psychoId = this.$route.params.idPsycho;
+    this.nutritionistId = this.$route.params.idNutritionist;
     this.scheduleId = this.$route.params.idSchedule;
     console.log(this.userId);
-    console.log(this.psychoId);
+    console.log(this.nutritionistId);
     console.log(this.scheduleId);
     try {
       const response = await PatientApiService.getById(this.userId);
-      const response2 = await PsychologistsApiService.getById(this.psychoId);
-      const response3 = await PsychologistsApiService.getByIdSchedule(this.scheduleId);
+      const response2 = await NutritionistsApiService.getById(this.nutritionistId);
+      const response3 = await NutritionistsApiService.getByIdSchedule(this.scheduleId);
       this.loginData = response.data;
-      this.psychologists = response2.data;
+      this.nutritionists = response2.data;
       this.schedules = response3.data;
     } catch (e)
     {

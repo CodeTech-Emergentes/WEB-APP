@@ -13,7 +13,7 @@
           </v-col>
           <v-col cols="12" sm="6" md="8">
             <v-card elevation="10">
-              <v-card-title class="ml-5" style="font-size:2em">Perfil del psicologo</v-card-title>
+              <v-card-title class="ml-5" style="font-size:2em">Perfil del nutricionista</v-card-title>
               <v-row class="mb-2">
                 <v-col cols="12" md="6">
                   <v-card-title class="ml-10 mr-10 mb-2">Full name</v-card-title>
@@ -73,7 +73,7 @@
       <v-dialog v-model="dialog" persistent max-width="500px" v-if="correct!=null">
         <v-card>
           <v-card-title>
-            <span class="text-h5">Perfil del psicólogo</span>
+            <span class="text-h5">Perfil del nutricionista</span>
           </v-card-title>
           <v-card-text>
             <v-row align="center" justify="center">
@@ -247,12 +247,12 @@
 </template>
 
 <script>
-import PsychologistsApiService from "../../core/services/nutritionists-api.service";
+import NutritionistsApiService from "../../core/services/nutritionists-api.service";
 import {validationMixin} from "vuelidate";
 import {email, maxLength, required} from "vuelidate/lib/validators";
 
 export default {
-  name: "psychologist-profile",
+  name: "nutritionist-profile",
   mixins: [validationMixin],
   validations: {
     name: { required, maxLength: maxLength(50)},
@@ -269,7 +269,7 @@ export default {
     img: {required},
   },
   data: () => ({
-    psychologists: [],
+    nutritionists: [],
     profileData: [],
     dataUser: {},
     userId: 0,
@@ -300,8 +300,8 @@ export default {
     this.loginData = JSON.parse(localStorage.getItem("nutritionist"))
     this.userId = this.loginData.id;
     try {
-      const response = await PsychologistsApiService.getAll();
-      this.psychologists = response.data;
+      const response = await NutritionistsApiService.getAll();
+      this.nutritionists = response.data;
       this.profileData = this.loginData;
     } catch (e) {
       console.error(e);
@@ -341,7 +341,7 @@ export default {
       this.profileData.about = this.about;
       this.profileData.cmp = this.cmp;
       this.profileData.img = this.img;
-      PsychologistsApiService.update(this.profileData.id, this.profileData);
+      NutritionistsApiService.update(this.profileData.id, this.profileData);
       this.dialog = false;
     },
 

@@ -11,7 +11,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn rounded color="primary" dark plain to="/login_psycho" >
+            <v-btn rounded color="primary" dark plain to="/login_nutritionist" >
               log in
             </v-btn>
           </v-card-actions>
