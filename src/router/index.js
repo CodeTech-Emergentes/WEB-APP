@@ -4,9 +4,9 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home_psycho/:id',
+    path: '/home_psycho',
     name: 'home-psycho',
-    component: () => import('../components/psychologists/homepage-psychologist')
+    component: () => import('../components/nutritionists/homepage-nutritionist')
   },
   {
     path:'/home_patient/:id',
@@ -20,14 +20,14 @@ const routes = [
     component: () => import('../components/patients/patient-profile')
   },
   {
-    path: '/home_psycho/:id/profile_psycho',
+    path: '/home_psycho/profile_psycho',
     name: 'psychologist-profile',
-    component: () => import('../components/psychologists/psychologist-profile')
+    component: () => import('../components/nutritionists/nutritionist-profile')
   },
   {
-    path: '/dashboard_patient/:id',
+    path: '/dashboard_patient',
     name: 'dashboard_psycho',
-    component: () => import('../components/patients/patient-dashboard')
+    component: () => import('../components/nutritionists/patient-dashboard')
   },
   {
     path: '*',
@@ -48,19 +48,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/dashboard_psycho/:id',
+    path: '/dashboard_psycho',
     name: 'dashboard_patient',
-    component: ()=> import('../components/psychologists/list-psychologists')
+    component: ()=> import('../components/patients/list-psychologists')
   },
   {
     path: '/login_psycho',
     name: 'psychologist-login',
-    component: () => import('../components/psychologists/login-psychologist')
+    component: () => import('../components/nutritionists/login-nutritionist')
   },
   {
     path: '/register_psycho',
     name: 'psychologist-register',
-    component: () => import('../components/psychologists/register-psychologist')
+    component: () => import('../components/nutritionists/register-nutritionist')
   },
   {
     path: '/login_patient',
@@ -88,14 +88,14 @@ const routes = [
     component: () => import('../components/patients/patient-publication')
   },
   {
-    path: '/logbook_psychologist/:psycho_id/patient/:patient_id',
+    path: '/logbook_psychologist/patient',
     name: 'psychologist-logbook',
-    component: ()=> import('../components/psychologists/psychologist-logbook')
+    component: ()=> import('../components/nutritionists/nutritionist-logbook')
   },
   {
-    path: '/appointments-psycho/:id',
+    path: '/appointments-psycho',
     name: 'psychologist-appointments',
-    component: ()=> import('../components/psychologists/appointments-psycho')
+    component: ()=> import('../components/nutritionists/appointments-nutritionist')
   },
   {
     path: '/appointments-patient/:id',

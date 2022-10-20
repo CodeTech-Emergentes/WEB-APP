@@ -60,7 +60,7 @@
 
 <script>
 
-import PsychologistsApiService from "../../core/services/psychologists-api.service"
+import PsychologistsApiService from "../../core/services/nutritionists-api.service"
 import { validationMixin } from 'vuelidate'
 import { required, maxLength, email, minLength, numeric } from 'vuelidate/lib/validators'
 

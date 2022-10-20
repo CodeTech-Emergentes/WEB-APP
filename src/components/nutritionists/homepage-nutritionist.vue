@@ -81,14 +81,8 @@
             <v-card-title>{{publication.title}}</v-card-title>
             <v-card-text>
               <p class="black--text">{{publication.description}}</p>
-              <v-row class="ml-0">
-                <v-chip-group  v-for="tag in tags" :key="tag">
-                  <v-chip v-if="tag.publication.id === publication.id" color="primary" outlined>{{tag.text}}</v-chip>
-                </v-chip-group>
-              </v-row>
             </v-card-text>
             <v-card-actions class="justify-end">
-              <v-btn color="white" @click="openDialogTag(publication.id)">Add Tags</v-btn>
               <v-btn color="white" @click="editChanges(publication)">Edit</v-btn>
               <v-btn color="primary" @click="deletePost(publication)">Delete</v-btn>
             </v-card-actions>
@@ -113,7 +107,7 @@
       <v-row>
         <v-card max-width="220" class="mx-auto">
           <v-card-title class=" text-subtitle-1 text--primary text-uppercase font-weight-bold">
-            New psychologists
+            New Nutritionists
           </v-card-title>
         </v-card>
         <v-col  sm="4" md="2" lg="12" v-for="psychology in psychologists" :key="psychology">
@@ -179,7 +173,7 @@
 <script>
 
 import PublicationsApiService from "../../core/services/publications-api-service"
-import PsychologistsApiService from "../../core/services/psychologists-api.service"
+import PsychologistsApiService from "../../core/services/nutritionists-api.service"
 
 export default {
   name: "homepage-psychologist",
@@ -195,12 +189,11 @@ export default {
     ],
     slides: [
       'Up to 20% discount on the dating package !!!',
-      'Schedule with our new psychologists!'
+      'Schedule with our new nutritionists!'
     ],
     publications: [],
     psychologists: [],
-    loginData: [],
-    tags: [],
+    loginData: {},
     snackbar: false,
     message: '',
     formAdd: true,
@@ -221,7 +214,7 @@ export default {
       description: "",
       img: "",
       createdAt: "",
-      psychologistId: 0
+      nutritionistId: 0
     },
     defaultPublication: {
       id: 0,
@@ -229,7 +222,7 @@ export default {
       description: "",
       img: "",
       createdAt: "",
-      psychologistId: 0
+      nutritionistId: 0
     },
     defaultTag: {
       text: "",
@@ -240,7 +233,9 @@ export default {
 
 
   created() {
-    this.userId = this.$route.params.id;
+    this.loginData = JSON.parse(localStorage.getItem("nutritionist"))
+    this.userId = this.loginData.id;
+    console.log(this.loginData)
     this.retrievePublications();
     this.retrievePsychologists();
   },
@@ -249,23 +244,13 @@ export default {
   methods: {
 
      retrievePublications(){
-      PublicationsApiService.getByPsychologistId(this.userId)
+      PublicationsApiService.getByNutritionistId(this.userId)
        .then(response => {
          this.publications = response.data;
-         console.log(response.data);
        })
        .catch(e=>{
         console.log(e);
        });
-
-       PublicationsApiService.getTags()
-           .then(response => {
-             this.tags = response.data;
-             console.log(response.data);
-           })
-           .catch(e=>{
-             console.log(e);
-           });
     },
 
     retrievePsychologists(){
@@ -298,11 +283,11 @@ export default {
       else {
         this.defaultPublication.createdAt = this.date
         this.defaultPublication.img = "https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"
-        this.defaultPublication.psychologistId = this.userId
+        this.defaultPublication.nutritionistId = this.userId
         await PublicationsApiService.create(this.defaultPublication)
         // this.publications.push(this.defaultPublication)
 
-        const response = await PublicationsApiService.getByPsychologistId(this.userId)
+        const response = await PublicationsApiService.getByNutritionistId(this.userId)
         console.log(this.userId);
 
 
@@ -331,12 +316,6 @@ export default {
 
     closeDialogTag(){
       this.dialogTag = false;
-    },
-
-    async addTag(){
-      await PublicationsApiService.createTag(this.defaultTag);
-      const response = await PublicationsApiService.getTags();
-      this.tags = response.data;
     },
 
     editChanges(item){

@@ -48,7 +48,7 @@
 <script>
 import { StripeCheckout } from '@vue-stripe/vue-stripe';
 import PatientApiService from "../../core/services/patient-api-service";
-import PsychologistsApiService from "../../core/services/psychologists-api.service";
+import PsychologistsApiService from "../../core/services/nutritionists-api.service";
 export default {
   name: "payment",
   components: {

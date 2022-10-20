@@ -1,4 +1,4 @@
-# PsychoHelp Web Application
+# Nutrix Web Application
 
 ## Project setup
 ```

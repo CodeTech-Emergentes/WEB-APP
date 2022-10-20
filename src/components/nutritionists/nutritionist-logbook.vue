@@ -138,13 +138,13 @@
 
 <script>
 import AppointmentApiService from "../../core/services/appointments-api.service"
-import PatientApiService from "../../core/services/patient-api-service"
 
 export default {
   name: "psychologist-logbook",
   data: () => ({
     appointments: [],
     patientData: [],
+    nutritionistData: [],
     motive: "",
     motiveForm: "",
     personalHistory: "",
@@ -157,20 +157,22 @@ export default {
     treatmentForm: "",
     scheduleDate: "",
     patientId: 0,
-    psychologistId: 0,
+    nutritionistId: 0,
     actualSession: null,
     dialog: false,
     dataAppointment: {}
   }),
 
   async created() {
-    this.patientId = this.$route.params.patient_id;
-    this.psychologistId = this.$route.params.psycho_id;
+    this.nutritionistData = JSON.parse(localStorage.getItem("nutritionist"))
+    this.nutritionistId = this.nutritionistData.id;
+
+    this.patientData = JSON.parse(localStorage.getItem("patient"))
+    this.patientId = this.patientData.id;
+
     try {
-      const responseAppointment = await AppointmentApiService.getAppointmentByPatientIdAndPsychologistId(this.patientId, this.psychologistId);
-      const responsePatient = await PatientApiService.getById(this.patientId);
+      const responseAppointment = await AppointmentApiService.getAppointmentByPatientIdAndNutritionistId(this.patientId, this.nutritionistId);
       this.appointments = responseAppointment.data;
-      this.patientData = responsePatient.data;
     }
     catch (e)
     {
@@ -197,6 +199,7 @@ export default {
 
     birthDatePatient() {
       let date = this.patientData.date;
+      console.log(this.patientData)
       return date.slice(0,10);
     },
 

@@ -229,7 +229,7 @@
 </template>
 
 <script>
-import PsychologistsApiService from "../../core/services/psychologists-api.service"
+import PsychologistsApiService from "../../core/services/nutritionists-api.service"
 import { validationMixin } from 'vuelidate'
 import PatientApiService from "../../core/services/patient-api-service";
 import AppointmentAppointmentService from '../../core/services/appointments-api.service'
@@ -315,7 +315,7 @@ export default {
     },
 
     retrievePsychoSchedules(id) {
-      PsychologistsApiService.getScheduleFromPsycho(id)
+      PsychologistsApiService.getScheduleFromNutritionist(id)
           .then(response => {
             this.schedules = response.data;
             console.log(response.data);
