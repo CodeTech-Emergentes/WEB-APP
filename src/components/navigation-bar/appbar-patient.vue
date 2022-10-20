@@ -3,7 +3,7 @@
     <v-app-bar app color=#03A9F4>
       <!--Drawer Icon-->
       <v-app-bar-nav-icon align="right" @click.stop="drawer = !drawer" color="white"></v-app-bar-nav-icon>
-      <h1 class="text-sm-h4 text-md-h4 text-lg-h5 font-weight-medium white--text ml-3" >PSYCHOHELP</h1>
+      <h1 class="text-sm-h4 text-md-h4 text-lg-h5 font-weight-medium white--text ml-3" >NUTRIX</h1>
       <v-container class="py-0 fill-height">
         <v-spacer></v-spacer>
       </v-container>

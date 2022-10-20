@@ -78,7 +78,8 @@ export default {
   }),
 
   async created() {
-    this.userId = this.$route.params.id;
+    this.loginData = JSON.parse(localStorage.getItem("nutritionist"))
+    this.userId = this.loginData.id;
     const responsePatient = await PatientApiService.getAll();
     this.patients = responsePatient.data;
     await this.retrieveAppointments();
@@ -130,13 +131,13 @@ export default {
     },
 
     async retrieveAppointments(){
-      const response = await AppointmentApiService.getAppointmentsByPsychologistId(this.userId);
+      const response = await AppointmentApiService.getAppointmentsByNutritionistId(this.userId);
       this.appointments = response.data;
     },
 
     async cancelAppointment(appointmentId){
       await AppointmentApiService.deleteAppointment(appointmentId);
-      const response = await AppointmentApiService.getAppointmentsByPsychologistId(this.userId);
+      const response = await AppointmentApiService.getAppointmentsByNutritionistId(this.userId);
       this.appointments = response.data;
       this.dialog = false;
       this.dialogInfo = false;

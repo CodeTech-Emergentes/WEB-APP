@@ -3,7 +3,7 @@
     <v-app-bar app color=#03A9F4>
       <!--Drawer Icon-->
       <v-app-bar-nav-icon align="right" @click.stop="drawer = !drawer" color="white"></v-app-bar-nav-icon>
-      <h1 class="text-sm-h4 text-md-h4 text-lg-h5 font-weight-medium white--text ml-3" >PSYCHOHELP</h1>
+      <h1 class="text-sm-h4 text-md-h4 text-lg-h5 font-weight-medium white--text ml-3" >NUTRIX</h1>
       <v-spacer></v-spacer>
     </v-app-bar>
     <!--Drawer despegable-->
@@ -22,7 +22,7 @@
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
-            <v-list-item-content @click="redirectTo(item.routeName, userId)">
+            <v-list-item-content @click="redirectTo(item.routeName)">
               {{ item.text }}
               <v-divider></v-divider>
             </v-list-item-content>
@@ -63,8 +63,13 @@ export default {
     }
   },
   methods: {
-    redirectTo(router, id) {
-      this.$router.push({name: router , params:{id: id}})
+    redirectTo(router) {
+      if(router === 'psychologist-login') {
+        localStorage.removeItem("nutritionist")
+        this.$router.push({name: router})
+      } else {
+        this.$router.push({name: router})
+      }
     },
 
     redirectHome(id) {

@@ -247,7 +247,7 @@
 </template>
 
 <script>
-import PsychologistsApiService from "../../core/services/psychologists-api.service";
+import PsychologistsApiService from "../../core/services/nutritionists-api.service";
 import {validationMixin} from "vuelidate";
 import {email, maxLength, required} from "vuelidate/lib/validators";
 
@@ -297,12 +297,12 @@ export default {
   },
 
   async created() {
-    this.userId = this.$route.params.id;
+    this.loginData = JSON.parse(localStorage.getItem("nutritionist"))
+    this.userId = this.loginData.id;
     try {
       const response = await PsychologistsApiService.getAll();
-      const response2 = await PsychologistsApiService.getById(this.userId);
       this.psychologists = response.data;
-      this.profileData = response2.data;
+      this.profileData = this.loginData;
     } catch (e) {
       console.error(e);
     }

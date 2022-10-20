@@ -127,7 +127,7 @@
 <script>
 
 import PublicationsApiService from "../../core/services/publications-api-service"
-import PsychologistsApiService from "../../core/services/psychologists-api.service"
+import PsychologistsApiService from "../../core/services/nutritionists-api.service"
 import PatientApiService from "../../core/services/patient-api-service"
 
 export default {
@@ -147,7 +147,7 @@ export default {
     ],
     slides: [
         'Up to 20% discount on the dating package !!!',
-        'Schedule with our new psychologists!'
+        'Schedule with our new nutritionists!'
     ],
     buttons: [
         'Agenda aquí',

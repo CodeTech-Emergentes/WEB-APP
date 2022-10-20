@@ -153,8 +153,8 @@
 <script>
 
 import AppointmentApiService from '../../core/services/appointments-api.service'
-import PsychologistApiService from '../../core/services/psychologists-api.service'
-import PsychologistsApiService from "../../core/services/psychologists-api.service";
+import PsychologistApiService from '../../core/services/nutritionists-api.service'
+import PsychologistsApiService from "../../core/services/nutritionists-api.service";
 
 export default {
   name: "appointments-patient",
@@ -230,7 +230,7 @@ export default {
     },
 
     retrievePsychoSchedules(id) {
-      PsychologistsApiService.getScheduleFromPsycho(id)
+      PsychologistsApiService.getScheduleFromNutritionist(id)
           .then(response => {
             this.schedules = response.data;
             console.log(response.data);

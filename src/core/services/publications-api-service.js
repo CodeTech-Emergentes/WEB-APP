@@ -4,24 +4,13 @@ class PublicationsApiService{
     getAll(){
         return http.get("/publications");
     }
-    // getById(id) {
-    //     return http.get(`/publications/${id}?_expand=psychologist`);
-    // }
-
-    getTags(){
-        return http.get("/tags");
-    }
-
-    getPublicationTags(publicationId){
-        return http.get(`/publications/${publicationId}/tags`);
-    }
 
     getById(id) {
         return http.get(`/publications/${id}`);
     }
 
-    getByPsychologistId(psychologistId){
-        return http.get(`/publications/psychologist/${psychologistId}`);
+    getByNutritionistId(nutritionistId){
+        return http.get(`/publications/nutritionist/${nutritionistId}`);
     }
 
     create(data) {
@@ -40,9 +29,6 @@ class PublicationsApiService{
         return http.delete(`/publications/${id}`);
     }
 
-    findByTitle(title) {
-        return http.get(`/publications?title=${title}`);
-    }
 }
 
 export default new PublicationsApiService();

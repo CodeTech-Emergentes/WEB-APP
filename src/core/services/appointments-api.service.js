@@ -14,16 +14,16 @@ class AppointmentsApiService{
         return http.get(`/appointment/${id}`);
     }
 
-    getPatientsByPsychologistId(psychoId) {
-        return http.get(`/appointment/psychologist/${psychoId}`);
+    getPatientsByNutritionistId(nutritionistId) {
+        return http.get(`/appointment/nutritionist/${nutritionistId}/patient`);
     }
 
-    getAppointmentByPatientIdAndPsychologistId(patientId, psychoId) {
-        return http.get(`/appointment/psychologist/${psychoId}/patient/${patientId}`);
+    getAppointmentByPatientIdAndNutritionistId(patientId, nutritionistId) {
+        return http.get(`/appointment/nutritionist/${nutritionistId}/patient/${patientId}`);
     }
 
-    getAppointmentsByPsychologistId(psychoId) {
-        return http.get(`/appointment/psychologists/${psychoId}`);
+    getAppointmentsByNutritionistId(nutritionistId) {
+        return http.get(`/appointment/nutritionist/${nutritionistId}`);
     }
 
     getAppointmentsByPatientId(patientId) {

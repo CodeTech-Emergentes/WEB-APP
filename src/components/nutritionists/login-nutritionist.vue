@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import PsychologistsApiService from "../../core/services/psychologists-api.service";
+import NutritionistsApiService from "../../core/services/nutritionists-api.service";
 
 export default {
   name: "login-psychologist",
@@ -54,7 +54,7 @@ export default {
   }),
   async created() {
     try {
-      const response = await PsychologistsApiService.getAll();
+      const response = await NutritionistsApiService.getAll();
       this.psychologists = response.data;
     }
     catch (e)
@@ -65,13 +65,12 @@ export default {
   methods: {
     async validateLogin() {
       try {
-        const response2 = await PsychologistsApiService.findByEmail(this.email);
-        this.loginData = response2.data;
-        console.log(this.loginData);
-        if (this.password === this.loginData.password) {
-          await this.$router.push({name: 'home-psycho', params: {id: this.loginData.id}})
+        this.loginData = await NutritionistsApiService.findByEmail(this.email);
+        if (this.password === this.loginData.data.password) {
+          localStorage.setItem("nutritionist", JSON.stringify(this.loginData.data))
+          await this.$router.push({name: 'home-psycho'})
         }else {
-          console.log(this.loginData.email)
+          console.log(this.loginData.data.email)
           alert("Incorrect Password")
         }
       } catch (e) {

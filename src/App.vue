@@ -16,7 +16,7 @@
 
 <script>
 
-import AppBarPsycho from './components/navigation-bar/appbar-psycho'
+import AppBarPsycho from './components/navigation-bar/appbar-nutrix'
 import AppBar from "./components/navigation-bar/app-bar";
 import AppBarPatient from "./components/navigation-bar/appbar-patient";
 

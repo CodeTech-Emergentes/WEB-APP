@@ -15,7 +15,7 @@
             </v-card-subtitle>
             <v-card-text class="text-center" style="color: black">{{ patient.email }}</v-card-text>
             <v-card-actions>
-              <v-btn  @click="redirectTo(psychologistId, patient.id.toString())" color="primary" class="light-blue--text" text>LogBook</v-btn>
+              <v-btn  @click="redirectTo(patient)" color="primary" class="light-blue--text" text>LogBook</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -37,12 +37,13 @@ export default {
     date: '',
     img: '',
     patients: [],
-    psychologistId: '',
+    nutritionistId: '',
   }),
   async created() {
-    this.psychologistId = this.$route.params.id;
+    this.loginData = JSON.parse(localStorage.getItem("nutritionist"))
+    this.nutritionistId = this.loginData.id;
     try {
-      const response = await AppointmentApiService.getPatientsByPsychologistId(this.psychologistId);
+      const response = await AppointmentApiService.getPatientsByNutritionistId(this.nutritionistId);
       this.patients = response.data;
     }
     catch (e)
@@ -51,9 +52,10 @@ export default {
     }
   },
   methods: {
-    redirectTo(psychoId, patientId) {
-      this.$router.push({name: 'psychologist-logbook', params:{psycho_id: psychoId, patient_id: patientId}});
-      console.log(this.psychologistId);
+    redirectTo(patient) {
+      localStorage.setItem("patient", JSON.stringify(patient));
+      this.$router.push({name: 'psychologist-logbook'});
+      console.log(this.nutritionistId);
     }
   },
 
