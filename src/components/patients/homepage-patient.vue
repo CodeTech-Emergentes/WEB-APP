@@ -35,43 +35,35 @@
 
       <!-- PUBLICATIONS !-->
 
-            <v-row v-for="publication in publications" :key="publication.id" class="py-4 mr-2">
-              <v-card  min-width="50vh" rounded="lg" hover @click="redirectToPublication(publication.id)" >
-                <v-row>
-                  <v-col cols="12" md="4">
-                      <v-img class="mt-4 ml-3" flat height="100%" :src="publication.img"
-                             :aspect-ratio="16 / 9"
-                             max-height="90%"
-                      ></v-img>
-                  </v-col>
-                  <v-col class="ml-4">
-                    <div>
-                      <v-card-title class="text-lg-h5 font-weight-bold pt-3 mb-1">
-                        {{publication.title}}
-                      </v-card-title>
-                      <v-card-subtitle>
-                        <v-avatar color="primary" size="20" class="mr-2">
-                          <v-icon dark size="18">mdi-feather</v-icon>
-                        </v-avatar>
-                        {{publication.psychologist.name}}
-                      </v-card-subtitle>
-                      <v-card-text class="text-h6 font-weight-regular pt-3 text--secondary">
-                        {{publication.description}}
-                      </v-card-text>
-                      <div class="d-flex align-center ml-4">
-                      </div>
-                    </div>
-                  </v-col>
-                </v-row>
-              </v-card>
-            </v-row>
+      <v-flex class="mx-auto">
+        <v-card class="mb-3" v-for="publication in publications" :key="publication" hover @click="redirectToPublication(publication.id)">
+          <v-row
+              align="center"
+              class="ml-4 mt-4"
+              no-gutters
+          >
+            <v-avatar size="40">
+              <img
+                  alt="user"
+                  :src="publication.nutritionist.image"
+              >
+            </v-avatar>
+            <p class="ml-2 mt-4">{{publication.nutritionist.name}}</p>
+          </v-row>
+          <v-divider></v-divider>
+          <v-card-title>{{publication.title}}</v-card-title>
+          <v-card-text>
+            <p class="black--text">{{publication.description}}</p>
+          </v-card-text>
+        </v-card>
+      </v-flex>
     </v-col>
     <v-col sm="" lg="2">
       <!--CARDS PSICÓLOGOS-->
       <v-row>
         <v-card max-width="220" class="mx-auto">
           <v-card-title class=" text-subtitle-1 text--primary text-uppercase font-weight-bold">
-            New psychologists
+            New nutritionists
           </v-card-title>
         </v-card>
         <v-col  sm="4" md="2" lg="12" v-for="psychology in psychologists" :key="psychology">
@@ -153,7 +145,7 @@ export default {
         'Agenda aquí',
     ],
     items: [
-      {text: 'Psychologists', routeName: 'dashboard_patient'},
+      {text: 'Nutritionists', routeName: 'dashboard_patient'},
       {text: 'Help Center', route: '/centro de ayuda'},
       {text: 'Guide', route: '/guia'}
     ],

@@ -1,6 +1,6 @@
 <template>
-  <div class="justify-center">
-    <v-row>
+  <div>
+    <v-row class="justify-end">
       <v-col cols="12" sm="6">
         <v-card  class="mx-auto" max-width="400">
           <v-img class="align-end" height="200px" src="https://d2lcsjo4hzzyvz.cloudfront.net/blog/wp-content/uploads/2020/10/01100423/Cuándo-ir-al-psicólogo-.jpg">

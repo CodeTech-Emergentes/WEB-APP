@@ -16,13 +16,13 @@
               <v-col cols="3">
                 <h3 class="ml-4 mr-auto">
                   <v-icon class="ml-auto" color="white">mdi-account</v-icon>
-                  Psychologist: {{getPsychologistName(appointment.psychoId)}}</h3>
+                  Nutritionist: {{getPsychologistName(appointment.nutritionistId)}}</h3>
               </v-col>
             </v-card-text>
           </v-card>
         </v-col>
         <v-col cols="2" class="align-content-center" style="display: grid">
-          <v-btn class="mr-6" @click="psychologistDialog(appointment.psychoId, appointment.id)">Details</v-btn>
+          <v-btn class="mr-6" @click="psychologistDialog(appointment.nutritionistId, appointment.id)">Details</v-btn>
         </v-col>
       </v-row>
     </v-card>

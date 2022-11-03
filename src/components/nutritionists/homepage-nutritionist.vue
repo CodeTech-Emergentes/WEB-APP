@@ -72,10 +72,10 @@
                 <v-avatar size="40">
                   <img
                       alt="user"
-                      :src="publication.psychologist.img"
+                      :src="publication.photoUrl"
                   >
                 </v-avatar>
-                <p class="ml-2 mt-4">{{publication.psychologist.name}}</p>
+                <p class="ml-2 mt-4">{{publication.nutritionist.name}}</p>
               </v-row>
             <v-divider></v-divider>
             <v-card-title>{{publication.title}}</v-card-title>
@@ -235,7 +235,7 @@ export default {
   created() {
     this.loginData = JSON.parse(localStorage.getItem("nutritionist"))
     this.userId = this.loginData.id;
-    console.log(this.loginData)
+    console.log(this.userId)
     this.retrievePublications();
     this.retrievePsychologists();
   },
@@ -247,6 +247,7 @@ export default {
       PublicationsApiService.getByNutritionistId(this.userId)
        .then(response => {
          this.publications = response.data;
+         console.log(this.publications)
        })
        .catch(e=>{
         console.log(e);
