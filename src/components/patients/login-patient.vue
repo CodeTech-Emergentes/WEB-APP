@@ -4,7 +4,7 @@
         <v-card class="elevation-6 mt-10">
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-img width="100%" src="https://static.vecteezy.com/system/resources/previews/002/610/660/non_2x/woman-consulting-psychologist-vector.jpg"></v-img>
+                  <v-img width="100%" src="https://pancan.org/wp-content/uploads/2019/03/doctor-patient-health-fruit-stethoscope-733x450.jpg"></v-img>
                 </v-col>
 
                 <v-col cols="12" md="6" align="center">
