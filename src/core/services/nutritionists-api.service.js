@@ -18,11 +18,11 @@ class NutritionistsApiService {
     }
 
     findByName(name) {
-        return http.get(`/nutritionists/name/${name}`);
+        return http.get(`/nutritionists?name=${name}`);
     }
 
     findByGenre(genre){
-        return http.get(`/nutritionists/genre/${genre}`);
+        return http.get(`/nutritionists?genre=${genre}`);
     }
 
     findBySessionType(sessionType){
@@ -34,7 +34,7 @@ class NutritionistsApiService {
     }
 
     findByEmail(email){
-        return http.get(`/nutritionists/email/${email}`);
+        return http.get(`/nutritionists?email=${email}`);
     }
 
     getScheduleFromNutritionist(nutritionistId) {
