@@ -94,11 +94,15 @@ export default {
       try {
         const response2 = await PatientApiService.findByEmail(this.email);
         this.loginData = response2.data;
+        console.log("evaluar esto");
         console.log(this.loginData);
-        if (this.password === this.loginData.password) {
-          await this.$router.push({name: 'home-patient', params: {id: this.loginData.id}})
+        console.log(this.loginData[0].password);
+        console.log("la contrasena es");
+        console.log(this.password);
+        if (this.password === this.loginData[0].password) {
+          await this.$router.push({name: 'home-patient', params: {id: this.loginData[0].id}})
         } else {
-          console.log(this.loginData.email)
+          console.log(this.loginData[0].email)
           alert("Incorrect Password")
         }
       } catch (e) {
