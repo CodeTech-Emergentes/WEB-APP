@@ -27,7 +27,7 @@ class AppointmentsApiService{
     }
 
     getAppointmentsByPatientId(patientId) {
-        return http.get(`/appointment/patients/${patientId}`);
+        return http.get(`/appointment/patient/${patientId}`);
     }
 
     deleteAppointment(id) {

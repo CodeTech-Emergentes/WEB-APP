@@ -1,6 +1,6 @@
 <template>
-  <div class="justify-center">
-    <v-row>
+  <div>
+    <v-row class="justify-end">
       <v-col cols="12" sm="6">
         <v-card  class="mx-auto" max-width="400">
           <v-img class="align-end" height="200px" contain src="https://img.freepik.com/premium-vector/nutritionist-she-smiled-brightly-has-shown-healthy-fruits-vegetables-concept-health-care-diet_610956-55.jpg?w=2000">

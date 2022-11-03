@@ -233,7 +233,7 @@ export default {
   created() {
     this.loginData = JSON.parse(localStorage.getItem("nutritionist"))
     this.userId = this.loginData.id;
-    console.log(this.loginData)
+    console.log(this.userId)
     this.retrievePublications();
     this.retrieveNutritionists();
   },
@@ -245,6 +245,7 @@ export default {
       PublicationsApiService.getByNutritionistId(this.userId)
        .then(response => {
          this.publications = response.data;
+         console.log(this.publications)
        })
        .catch(e=>{
         console.log(e);
