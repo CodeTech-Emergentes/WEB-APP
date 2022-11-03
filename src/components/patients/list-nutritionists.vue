@@ -7,25 +7,25 @@
             <v-layout row wrap>
               <v-flex xs12 sm12>
                 <v-card>
-                  <v-card-title class="text-lg-subtitle-2">Do you already have a psychologist? Look it up by their name.</v-card-title>
+                  <v-card-title class="text-lg-subtitle-2">Do you already have a nutritionist? Look it up by their name.</v-card-title>
                   <v-card-actions>
-                    <v-text-field v-model="search" label="Search Name" outlined v-on:input="getPsychologistByName()"></v-text-field>
+                    <v-text-field v-model="search" label="Search Name" outlined v-on:input="getNutritionistByName()"></v-text-field>
                   </v-card-actions>
                   <v-card-title>Filter by</v-card-title>
                   <v-divider></v-divider>
                   <v-card-title class="text-lg-subtitle-1">Genre</v-card-title>
                   <v-card-text>
                     <v-radio-group v-model="genre">
-                      <v-radio label="Male" value="Male" v-on:click="getPsychologistsByFilter(genre, sessionType)"></v-radio>
-                      <v-radio label="Female" value="Female" v-on:click="getPsychologistsByFilter(genre, sessionType)"></v-radio>
+                      <v-radio label="Male" value="Male" v-on:click="getNutritionistsByFilter(genre, sessionType)"></v-radio>
+                      <v-radio label="Female" value="Female" v-on:click="getNutritionistsByFilter(genre, sessionType)"></v-radio>
                     </v-radio-group>
                   </v-card-text>
                   <v-divider></v-divider>
                   <v-card-title class="text-lg-subtitle-1">Session Type</v-card-title>
                   <v-card-text>
                   <v-radio-group v-model="sessionType">
-                    <v-radio label="Individual" value="Individual" v-on:click="getPsychologistsByFilter(genre, sessionType)"></v-radio>
-                    <v-radio label="Couple" value="Couple" v-on:click="getPsychologistsByFilter(genre, sessionType)"></v-radio>
+                    <v-radio label="Individual" value="Individual" v-on:click="getNutritionistsByFilter(genre, sessionType)"></v-radio>
+                    <v-radio label="Couple" value="Couple" v-on:click="getNutritionistsByFilter(genre, sessionType)"></v-radio>
                   </v-radio-group>
                   </v-card-text>
                   <v-divider></v-divider>
@@ -38,30 +38,30 @@
           </v-container>
         </v-sheet>
       </v-col>
-      <!--LISTA DE PSICOLOGOS-->
+      <!--LISTA DE NUTRICIONISTAS-->
       <v-col>
         <v-sheet rounded="lg">
       <v-container>
         <v-row>
           <v-container grid-list-md>
             <v-layout row wrap>
-              <v-flex v-for="psychologist in psychologists" :key="psychologist.id" xs12 sm4>
+              <v-flex v-for="nutritionist in nutritionists" :key="nutritionist.id" xs12 sm4>
                 <v-card min-height="350" class="mx-auto">
                   <v-col align="center">
                     <v-avatar width="100" height="100">
-                      <v-img :src="psychologist.img"></v-img>
+                      <v-img :src="nutritionist.img"></v-img>
                     </v-avatar>
                   </v-col>
-                  <v-card-title class="justify-center font-weight-bold text-lg-h6">{{psychologist.name}}</v-card-title>
-                  <v-card-subtitle class="text-center">{{psychologist.email}}</v-card-subtitle>
+                  <v-card-title class="justify-center font-weight-bold text-lg-h6">{{nutritionist.name}}</v-card-title>
+                  <v-card-subtitle class="text-center">{{nutritionist.email}}</v-card-subtitle>
                   <v-card-actions>
                     <v-container>
                       <v-row dense>
                         <v-col align="center">
-                          <v-btn class="text-lg-overline mb-5" outlined @click="psychologistDialog(psychologist)">Profile</v-btn>
+                          <v-btn class="text-lg-overline mb-5" outlined @click="nutritionistDialog(nutritionist)">Profile</v-btn>
                         </v-col>
                         <v-col align="center">
-                          <v-btn @click="appointmentDialog(psychologist)">Schedule Appointment</v-btn>
+                          <v-btn @click="appointmentDialog(nutritionist)">Schedule Appointment</v-btn>
                         </v-col>
                       </v-row>
                     </v-container>
@@ -76,24 +76,24 @@
       </v-col>
     </v-row>
     <template>
-      <!--DIALOG INFO PSICOLOGO SELECCIONADO-->
-      <v-dialog v-model="dialog" width="600" v-if="selectedPsychologist!=null" persistent>
+      <!--DIALOG INFO NUTRICIONISTA SELECCIONADO-->
+      <v-dialog v-model="dialog" width="600" v-if="selectedNutritionist!=null" persistent>
         <v-card>
           <v-col align="center">
             <v-avatar width="100" height="100">
-              <v-img :src="selectedPsychologist.img"></v-img>
+              <v-img :src="selectedNutritionist.img"></v-img>
             </v-avatar>
           </v-col>
-          <v-card-title class="justify-center">{{ selectedPsychologist.name }}</v-card-title>
-          <v-card-subtitle class="text-center">CMP: {{ selectedPsychologist.cmp}}</v-card-subtitle>
-          <v-card-text class="text-justify">{{ selectedPsychologist.about }}</v-card-text>
+          <v-card-title class="justify-center">{{ selectedNutritionist.name }}</v-card-title>
+          <v-card-subtitle class="text-center">CMP: {{ selectedNutritionist.cmp}}</v-card-subtitle>
+          <v-card-text class="text-justify">{{ selectedNutritionist.about }}</v-card-text>
           <v-container>
             <v-layout>
               <v-flex>
                 <v-card>
                   <v-card-title class="blue--text text--darken-2">Specialization</v-card-title>
                   <v-card-text>
-                   {{ selectedPsychologist.specialization }}
+                   {{ selectedNutritionist.specialization }}
                   </v-card-text>
                 </v-card>
               </v-flex>
@@ -105,7 +105,7 @@
                 <v-card>
                   <v-card-title class="blue--text text--darken-2">Academic Background</v-card-title>
                   <v-card-text>
-                    {{selectedPsychologist.formation}}
+                    {{selectedNutritionist.formation}}
                   </v-card-text>
                 </v-card>
                 <v-flex class="mt-2 text-end">
@@ -195,7 +195,7 @@
       <v-dialog v-model="dialogSelected" v-if="selectedSchedule!=null" width="500">
         <v-card>
           <v-card-title class="justify-center">Detalles de tu cita</v-card-title>
-          <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold mt-2">Terapeuta: {{selectedAppointment.name}}</v-card-subtitle>
+          <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold mt-2">Nutricionista: {{selectedAppointment.name}}</v-card-subtitle>
           <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold">Horario: {{dateApp + " " + selectedSchedule.time}}</v-card-subtitle>
           <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold">Paciente: {{loginData.lastName}}</v-card-subtitle>
           <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold">Teléfono: {{loginData.phone}}</v-card-subtitle>
@@ -208,7 +208,7 @@
     </template>
 
     <template>
-      <!--DIALOG INFO PSICOLOGO SELECCIONADO-->
+      <!--DIALOG INFO NUTRICIONISTA SELECCIONADO-->
       <v-dialog v-model="dialogPayment" width="400px">
         <v-card>
           <v-card-actions class="justify-end">
@@ -229,21 +229,21 @@
 </template>
 
 <script>
-import PsychologistsApiService from "../../core/services/nutritionists-api.service"
+import NutritionistsApiService from "../../core/services/nutritionists-api.service"
 import { validationMixin } from 'vuelidate'
 import PatientApiService from "../../core/services/patient-api-service";
 import AppointmentAppointmentService from '../../core/services/appointments-api.service'
 import { StripeElementCard} from "@vue-stripe/vue-stripe";
 import {loadStripe} from "@stripe/stripe-js";
 export default {
-  name: "list-psychologists",
+  name: "list-nutritionists",
   components: {
     StripeElementCard,
   },
   mixins: [validationMixin],
   data () {
     return {
-      psychologists: [],
+      nutritionists: [],
       schedules: [],
       loginData: [],
       userId: 0,
@@ -252,7 +252,7 @@ export default {
       toggle_exclusive: undefined,
       dialogAppointment: false,
       dialogSelected: false,
-      selectedPsychologist: null,
+      selectedNutritionist: null,
       selectedAppointment: null,
       selectedSchedule: null,
       dialogPayment: false,
@@ -286,7 +286,7 @@ export default {
       console.error(e);
     }
 
-    this.retrievePsychologists();
+    this.retrieveNutritionists();
     this.dialog = false;
     this.dialogAppointment = false;
     this.dialogSelected = false;
@@ -294,19 +294,19 @@ export default {
 
   methods:{
 
-    async programme(id, idPsycho, idSchedule) {
+    async programme(id, idNutritionist, idSchedule) {
       try {
-        await this.$router.push({name: 'checkout', params: {id: id, idPsycho: idPsycho, idSchedule: idSchedule}})
+        await this.$router.push({name: 'checkout', params: {id: id, idNutritionist: idNutritionist, idSchedule: idSchedule}})
       } catch (e)
       {
         console.error(e)
       }
     },
 
-    retrievePsychologists(){
-      PsychologistsApiService.getAll()
+    retrieveNutritionists(){
+      NutritionistsApiService.getAll()
       .then(response => {
-        this.psychologists = response.data;
+        this.nutritionists = response.data;
         console.log(response.data);
       })
       .catch(e => {
@@ -314,8 +314,8 @@ export default {
       });
     },
 
-    retrievePsychoSchedules(id) {
-      PsychologistsApiService.getScheduleFromNutritionist(id)
+    retrieveNutritionistSchedules(id) {
+      NutritionistsApiService.getScheduleFromNutritionist(id)
           .then(response => {
             this.schedules = response.data;
             console.log(response.data);
@@ -325,15 +325,15 @@ export default {
           });
     },
 
-    psychologistDialog(psychologist){
-      console.log('psychologistDialog psychologist:', psychologist);
-      this.selectedPsychologist = psychologist;
+    nutritionistDialog(nutritionist){
+      console.log('nutritionistDialog nutritionist:', nutritionist);
+      this.selectedNutritionist = nutritionist;
       this.dialog = true;
     },
 
-    appointmentDialog(psycho){
-      this.selectedAppointment = psycho;
-      this.retrievePsychoSchedules(this.selectedAppointment.id);
+    appointmentDialog(nutritionist){
+      this.selectedAppointment = nutritionist;
+      this.retrieveNutritionistSchedules(this.selectedAppointment.id);
       this.dialogAppointment = true;
     },
 
@@ -342,11 +342,11 @@ export default {
       this.dialogSelected = true;
     },
 
-    getPsychologistsByFilter(genre, sessionType){
+    getNutritionistsByFilter(genre, sessionType){
       if(genre!=null && sessionType===null) {
-        PsychologistsApiService.findByGenre(genre)
+        NutritionistsApiService.findByGenre(genre)
             .then(response => {
-              this.psychologists = response.data;
+              this.nutritionists = response.data;
               console.log(response.data);
             })
             .catch(e => {
@@ -354,9 +354,9 @@ export default {
             });
       }
       if(genre===null && sessionType!=null){
-        PsychologistsApiService.findBySessionType(sessionType)
+        NutritionistsApiService.findBySessionType(sessionType)
             .then(response => {
-              this.psychologists = response.data;
+              this.nutritionists = response.data;
               console.log(response.data);
             })
             .catch(e => {
@@ -364,9 +364,9 @@ export default {
             });
       }
       if(genre!=null && sessionType!=null){
-        PsychologistsApiService.findByGenreAndSessionType(genre,sessionType)
+        NutritionistsApiService.findByGenreAndSessionType(genre,sessionType)
             .then(response => {
-              this.psychologists = response.data;
+              this.nutritionists = response.data;
               console.log(response.data);
             })
             .catch(e => {
@@ -375,13 +375,13 @@ export default {
       }
     },
 
-    getPsychologistByName(){
+    getNutritionistByName(){
       if(this.search === "" || this.search === null)
-        this.retrievePsychologists();
+        this.retrieveNutritionists();
       else {
-        PsychologistsApiService.findByName(this.search)
+        NutritionistsApiService.findByName(this.search)
             .then(response => {
-              this.psychologists = response.data;
+              this.nutritionists = response.data;
               console.log(response.data);
             })
             .catch(e => {
@@ -395,7 +395,7 @@ export default {
     },
 
     clear () {
-      this.retrievePsychologists();
+      this.retrieveNutritionists();
       this.genre=null;
       this.sessionType=null;
     },
@@ -418,14 +418,14 @@ export default {
       this.dialogPayment = false;
     },
 
-    async handleSubmit(patientId, psychoId, dateTime, dateHour) {
+    async handleSubmit(patientId, nutritionistId, dateTime, dateHour) {
       let dateToIso = new Date(dateTime + " " + dateHour);
       let createdAt = new Date().toISOString();
       console.log(dateToIso.toISOString());
       let newAppointment = {
         patientId: patientId,
-        psychoId: psychoId,
-        psychoNotes: "Notes",
+        nutritionistId: nutritionistId,
+        nutritionistNotes: "Notes",
         scheduleDate: dateToIso,
         createdAt: createdAt,
         motive: "Motive",

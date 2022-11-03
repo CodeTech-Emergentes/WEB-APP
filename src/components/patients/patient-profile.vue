@@ -27,11 +27,6 @@
                       <v-card-title class="ml-10 mr-10 mb-2">Gender</v-card-title>
                       <v-card-subtitle class="dateProfile" style="font-size:18px">{{ profileData.gender }}</v-card-subtitle>
                     </v-col>
-                    <v-divider insert vertical></v-divider>
-                    <v-col>
-                      <v-card-title class="ml-10 mr-10 mb-2">State</v-card-title>
-                      <v-card-subtitle class="dateProfile" style="font-size:18px">{{ profileData.state }}</v-card-subtitle>
-                    </v-col>
                   </v-row>
                 </v-col>
                 <v-divider inset vertical></v-divider>
@@ -109,17 +104,6 @@
                       @input="$v.img.$touch()"
                       @blur="$v.img.$touch()"
                   ></v-text-field>
-                  <v-select
-                      outlined dense color="blue"
-                      v-model="state"
-                      :items="itemsState"
-                      :error-messages="stateErrors"
-                      label="Marital status"
-                      prepend-icon="mdi-list-status"
-                      required
-                      @change="$v.state.$touch()"
-                      @blur="$v.state.$touch()"
-                  ></v-select>
                   <v-select
                       outlined dense color="blue"
                       v-model="gender"

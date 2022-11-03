@@ -4,12 +4,12 @@
         <v-card class="elevation-6 mt-10">
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-img width="100%" src="https://static.vecteezy.com/system/resources/previews/002/610/660/non_2x/woman-consulting-psychologist-vector.jpg"></v-img>
+                  <v-img width="100%" src="https://pancan.org/wp-content/uploads/2019/03/doctor-patient-health-fruit-stethoscope-733x450.jpg"></v-img>
                 </v-col>
 
                 <v-col cols="12" md="6" align="center">
                   <v-card-text class="mt-6">
-                    <h1 class="text-center ma-1 mb-5">Bienvenido a PsychoHelp</h1>
+                    <h1 class="text-center ma-1 mb-5">Bienvenido a Nutrix</h1>
                     <h3 class="text-center  grey--text ">
                       Inicia sesión para continuar
                     </h3>
@@ -94,11 +94,15 @@ export default {
       try {
         const response2 = await PatientApiService.findByEmail(this.email);
         this.loginData = response2.data;
+        console.log("evaluar esto");
         console.log(this.loginData);
-        if (this.password === this.loginData.password) {
-          await this.$router.push({name: 'home-patient', params: {id: this.loginData.id}})
+        console.log(this.loginData[0].password);
+        console.log("la contrasena es");
+        console.log(this.password);
+        if (this.password === this.loginData[0].password) {
+          await this.$router.push({name: 'home-patient', params: {id: this.loginData[0].id}})
         } else {
-          console.log(this.loginData.email)
+          console.log(this.loginData[0].email)
           alert("Incorrect Password")
         }
       } catch (e) {

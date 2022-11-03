@@ -1,5 +1,4 @@
 import http from "./http-common"
-
 class PatientApiService{
     getAll(){
         return http.get("/patients");
@@ -25,7 +24,7 @@ class PatientApiService{
     }
 
     findByEmail(email) {
-        return http.get(`/patients/email/${email}`);
+        return http.get(`/patients?email=${email}`);
     }
 
     findAppointments(id) {

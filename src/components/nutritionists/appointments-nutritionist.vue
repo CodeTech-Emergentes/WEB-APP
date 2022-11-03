@@ -27,7 +27,7 @@
       </v-row>
     </v-card>
     <template>
-      <!--DIALOG INFO PSICOLOGO SELECCIONADO-->
+      <!--DIALOG INFO NUTRICIONISTA SELECCIONADO-->
       <v-dialog v-model="dialogInfo" width="400" v-if="selectedAppointment!=null">
         <v-card>
           <v-card-actions class="justify-end">
@@ -58,11 +58,11 @@
 
 <script>
 
-import AppointmentApiService from '../../core/services/appointments-api.service'
+import AppointmentsApiService from '../../core/services/appointments-api.service'
 import PatientApiService from '../../core/services/patient-api-service'
 
 export default {
-  name: "appointments-psycho",
+  name: "appointments-nutritionist",
   data: () => ({
     url: '',
     appointments: [],
@@ -108,11 +108,11 @@ export default {
     },
 
     async updateUrl(){
-      const response = await AppointmentApiService.getAppointmentId(this.appointmentId);
+      const response = await AppointmentsApiService.getAppointmentId(this.appointmentId);
       let dataAppointment = response.data;
       console.log(response.data);
       let addUrl = {
-        psychoNotes: this.url,
+        nutritionistNotes: this.url,
         scheduleDate: dataAppointment.scheduleDate,
         createdAt: dataAppointment.createdAt,
         motive: dataAppointment.motive,
@@ -120,7 +120,7 @@ export default {
         testRealized: dataAppointment.testRealized,
         treatment: dataAppointment.treatment,
       };
-      await AppointmentApiService.updateAppointment(dataAppointment.id, addUrl);
+      await AppointmentsApiService.updateAppointment(dataAppointment.id, addUrl);
       this.flagUrl = false;
     },
 
@@ -131,13 +131,13 @@ export default {
     },
 
     async retrieveAppointments(){
-      const response = await AppointmentApiService.getAppointmentsByNutritionistId(this.userId);
+      const response = await AppointmentsApiService.getAppointmentsByNutritionistId(this.userId);
       this.appointments = response.data;
     },
 
     async cancelAppointment(appointmentId){
-      await AppointmentApiService.deleteAppointment(appointmentId);
-      const response = await AppointmentApiService.getAppointmentsByNutritionistId(this.userId);
+      await AppointmentsApiService.deleteAppointment(appointmentId);
+      const response = await AppointmentsApiService.getAppointmentsByNutritionistId(this.userId);
       this.appointments = response.data;
       this.dialog = false;
       this.dialogInfo = false;

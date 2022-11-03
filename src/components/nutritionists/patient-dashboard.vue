@@ -54,7 +54,7 @@ export default {
   methods: {
     redirectTo(patient) {
       localStorage.setItem("patient", JSON.stringify(patient));
-      this.$router.push({name: 'psychologist-logbook'});
+      this.$router.push({name: 'nutritionist-logbook'});
       console.log(this.nutritionistId);
     }
   },

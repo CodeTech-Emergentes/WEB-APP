@@ -9,7 +9,7 @@
 
           <v-col cols="12" md="6" align="center">
             <v-card-text class="mt-6">
-              <h1 class="text-center ma-1 mb-5">Bienvenido a PsychoHelp</h1>
+              <h1 class="text-center ma-1 mb-5">Bienvenido a Nutrix</h1>
               <h3 class="text-center  grey--text ">
                 Llena tus datos para continuar
               </h3>

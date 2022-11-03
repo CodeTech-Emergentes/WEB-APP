@@ -7,7 +7,7 @@
       <v-divider inset vertical></v-divider>
       <h2 class="mt-lg-8">¡Comienza Aquí!</h2>
       <v-row justify="end" class="mr-2">
-        <v-btn plain outline to="/login_psycho">¿Ya eres parte de nuestro equipo? Ingresa Aquí</v-btn>
+        <v-btn plain outline to="/login_nutritionist">¿Ya eres parte de nuestro equipo? Ingresa Aquí</v-btn>
       </v-row>
       <v-divider inset vertical></v-divider>
       <form>
@@ -60,12 +60,12 @@
 
 <script>
 
-import PsychologistsApiService from "../../core/services/nutritionists-api.service"
+import NutritionistsApiService from "../../core/services/nutritionists-api.service"
 import { validationMixin } from 'vuelidate'
 import { required, maxLength, email, minLength, numeric } from 'vuelidate/lib/validators'
 
 export default {
-  name: "register-psychologist",
+  name: "register-nutritionist",
   mixins: [validationMixin],
   validations: {
     name: { required, maxLength: maxLength(50) },
@@ -101,8 +101,8 @@ export default {
   }),
   async created() {
     try {
-      const response = await PsychologistsApiService.getAll();
-      this.psychologists = response.data;
+      const response = await NutritionistsApiService.getAll();
+      this.nutritionists = response.data;
     }
     catch (e)
     {
@@ -173,7 +173,7 @@ export default {
         this.$v.$touch()
         this.$v.$reset()
       } else {
-        let psychologistObject = {
+        let nutritionistObject = {
           id : this.id,
           name: this.name,
           dni: this.dni,
@@ -190,9 +190,9 @@ export default {
           sessionType: "tgrue",
           password: this.password,
           genre : this.genre,}
-        PsychologistsApiService.create(psychologistObject)
+          NutritionistsApiService.create(nutritionistObject)
         alert("Registrado correctamente")
-        this.$router.push({name: 'psychologist-login'})
+        this.$router.push({name: 'nutritionist-login'})
       }
     }
   }

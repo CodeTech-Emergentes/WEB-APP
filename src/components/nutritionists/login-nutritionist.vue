@@ -22,7 +22,7 @@
             </v-row>
             <v-divider inset></v-divider>
             <v-row justify="center">
-              <v-btn class="mt-3" color="white" plain to="/register_psycho">
+              <v-btn class="mt-3" color="white" plain to="/register_nutritionist">
                 Sign up
               </v-btn>
             </v-row>
@@ -36,9 +36,9 @@
 import NutritionistsApiService from "../../core/services/nutritionists-api.service";
 
 export default {
-  name: "login-psychologist",
+  name: "login-nutritionist",
   data: () => ({
-    psychologists: [],
+    nutritionists: [],
     loginData: [],
     email: "",
     password: "",
@@ -55,7 +55,7 @@ export default {
   async created() {
     try {
       const response = await NutritionistsApiService.getAll();
-      this.psychologists = response.data;
+      this.nutritionists = response.data;
     }
     catch (e)
     {
@@ -68,7 +68,7 @@ export default {
         this.loginData = await NutritionistsApiService.findByEmail(this.email);
         if (this.password === this.loginData.data.password) {
           localStorage.setItem("nutritionist", JSON.stringify(this.loginData.data))
-          await this.$router.push({name: 'home-psycho'})
+          await this.$router.push({name: 'home-nutritionist'})
         }else {
           console.log(this.loginData.data.email)
           alert("Incorrect Password")
