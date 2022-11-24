@@ -17,7 +17,7 @@
                 <h4 class="ml-4 mt-3">Name: {{patientData.firstName + " " + patientData.lastName}}</h4>
                 <h4 class="ml-4 mt-2">Age: {{dateNow()}}</h4>
                 <h4 class="ml-4 mt-2">Birth Date: {{birthDatePatient()}}</h4>
-                <h4 class="ml-4 mt-2">Marital Status: {{patientData.state}}</h4>
+                <h4 class="ml-4 mt-2">Gender: {{patientData.gender}}</h4>
               </v-col>
               <v-col cols="6">
                 <h4 class="ml-4 mt-3">Email: {{patientData.email}}</h4>

@@ -215,12 +215,11 @@ export default {
       nutritionistId: 0
     },
     defaultPublication: {
-      id: 0,
+      photoUrl: "",
       title: "",
+      tags: "",
       description: "",
-      img: "",
-      createdAt: "",
-      nutritionistId: 0
+      content: "",
     },
     defaultTag: {
       text: "",
@@ -280,13 +279,13 @@ export default {
         this.message = 'Llena todos los campos'
       }
       else {
-        this.defaultPublication.createdAt = this.date
-        this.defaultPublication.img = "https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"
-        this.defaultPublication.nutritionistId = this.userId
-        await PublicationsApiService.create(this.defaultPublication)
+        this.defaultPublication.photoUrl = "img"
+        this.defaultPublication.tags = "tagg"
+        this.defaultPublication.content = "contenttt"
+        await PublicationsApiService.create(this.loginData.id, this.defaultPublication)
         // this.publications.push(this.defaultPublication)
 
-        const response = await PublicationsApiService.getByNutritionistId(this.userId)
+        const response = await PublicationsApiService.getByNutritionistId(this.loginData.id)
         console.log(this.userId);
 
 

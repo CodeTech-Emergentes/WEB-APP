@@ -36,7 +36,7 @@
       <!-- PUBLICATIONS !-->
 
             <v-row v-for="publication in publications" :key="publication.id" class="py-4 mr-2">
-              <v-card  min-width="50vh" rounded="lg" hover @click="redirectToPublication(publication.id)" >
+              <v-card min-width="100%" rounded="lg" hover @click="redirectToPublication(publication.id)" >
                 <v-row>
                   <v-col cols="12" md="4">
                       <v-img class="mt-4 ml-3" flat height="100%" :src="publication.nutritionist.image"

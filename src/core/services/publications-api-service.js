@@ -13,8 +13,8 @@ class PublicationsApiService{
         return http.get(`/publications/nutritionist/${nutritionistId}`);
     }
 
-    create(data) {
-        return http.post("/publications",data);
+    create(nutritionistId, data) {
+        return http.post(`/publications/nutritionists/${nutritionistId}`,data);
     }
 
     createTag(data){
