@@ -39,7 +39,7 @@
               <v-card  min-width="50vh" rounded="lg" hover @click="redirectToPublication(publication.id)" >
                 <v-row>
                   <v-col cols="12" md="4">
-                      <v-img class="mt-4 ml-3" flat height="100%" :src="publication.img"
+                      <v-img class="mt-4 ml-3" flat height="100%" :src="publication.nutritionist.image"
                              :aspect-ratio="16 / 9"
                              max-height="90%"
                       ></v-img>
@@ -76,7 +76,7 @@
         </v-card>
         <v-col  sm="4" md="2" lg="12" v-for="nutritionist in nutritionists" :key="nutritionist">
           <v-card max-height="300" max-width="200" class="mx-auto mb-5" >
-            <v-img aspect-ratio="14:9" height="150" width="200" class="white--text align-end" :src="nutritionist.img">
+            <v-img aspect-ratio="14:9" height="150" width="200" class="white--text align-end" :src="nutritionist.image">
             </v-img>
             <v-card-subtitle class="pb-0">
               {{nutritionist.name}}
@@ -101,7 +101,7 @@
       <v-card>
         <v-col align="center">
           <v-avatar width="100" height="100">
-            <v-img :src="selectedNutritionist.img"></v-img>
+            <v-img :src="selectedNutritionist.image"></v-img>
           </v-avatar>
         </v-col>
         <v-card-title class="justify-center">{{ selectedNutritionist.name }}</v-card-title>

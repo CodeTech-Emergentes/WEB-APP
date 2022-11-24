@@ -35,7 +35,7 @@
           </v-card-actions>
           <v-col align="center">
             <v-avatar width="100" height="100">
-              <v-img :src="selectedAppointment.img"></v-img>
+              <v-img :src="selectedAppointment.image"></v-img>
             </v-avatar>
           </v-col>
           <v-card-title class="justify-center">{{ selectedAppointment.name }}</v-card-title>

@@ -5,7 +5,7 @@
         <v-row align="center" justify="center">
           <v-col cols="auto">
             <v-card max-height="400" max-width="400" elevation="10">
-              <v-img :src="profileData.img" max-height="400" max-width="400"></v-img>
+              <v-img :src="profileData.image" max-height="400" max-width="400"></v-img>
             </v-card>
             <v-card class="mt-2" elevation="10">
               <v-card-title class="justify-center" style="font-size:2em">{{ profileData.name }}</v-card-title>

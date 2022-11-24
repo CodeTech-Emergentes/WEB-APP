@@ -49,7 +49,7 @@
                 <v-card min-height="350" class="mx-auto">
                   <v-col align="center">
                     <v-avatar width="100" height="100">
-                      <v-img :src="nutritionist.img"></v-img>
+                      <v-img :src="nutritionist.image"></v-img>
                     </v-avatar>
                   </v-col>
                   <v-card-title class="justify-center font-weight-bold text-lg-h6">{{nutritionist.name}}</v-card-title>
