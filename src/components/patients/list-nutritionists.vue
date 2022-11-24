@@ -130,6 +130,7 @@
                 ref="menu"
                 v-model="menu"
                 :close-on-content-click="false"
+                :return-value.sync="dateApp"
                 transition="scale-transition"
                 offset-y
                 min-width="auto"
@@ -262,7 +263,7 @@ export default {
       sessionType: null,
       search: "",
       activePicker: null,
-      dateApp: new Date().toISOString().substr(0, 7),
+      dateApp: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       menu: false,
       stripe: null,
       elements: null,
