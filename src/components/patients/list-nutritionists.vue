@@ -196,8 +196,8 @@
         <v-card>
           <v-card-title class="justify-center">Detalles de tu cita</v-card-title>
           <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold mt-2">Nutricionista: {{selectedAppointment.name}}</v-card-subtitle>
-          <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold">Horario: {{dateApp + " " + selectedSchedule.time}}</v-card-subtitle>
-          <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold">Paciente: {{loginData.lastName}}</v-card-subtitle>
+          <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold">Horario: {{selectedSchedule.time}}</v-card-subtitle>
+          <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold">Paciente: {{loginData.firstName + " " + loginData.lastName}}</v-card-subtitle>
           <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold">Teléfono: {{loginData.phone}}</v-card-subtitle>
           <v-card-subtitle class="text-left text-subtitle-1 text--primary text-uppercase font-weight-bold">E-mail: {{loginData.email}}</v-card-subtitle>
           <v-card-actions>
@@ -246,6 +246,7 @@ export default {
       nutritionists: [],
       schedules: [],
       loginData: [],
+      dataLocal: {},
       userId: 0,
       scheduleId: 0,
       dialog: false,
@@ -276,8 +277,10 @@ export default {
   },
 
   async created() {
-    this.userId = this.$route.params.id;
-    try {
+    //this.userId = this.$route.params.id;
+    this.dataLocal = JSON.parse(localStorage.getItem("patient"));
+    this.userId = this.dataLocal.id;
+    try { 
       const response = await PatientApiService.getById(this.userId);
       this.loginData = response.data;
     }

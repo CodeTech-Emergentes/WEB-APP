@@ -38,7 +38,7 @@ class NutritionistsApiService {
     }
 
     getScheduleFromNutritionist(nutritionistId) {
-        return http.get(`/nutritionists/schedule/${nutritionistId}`);
+        return http.get(`/nutritionists/${nutritionistId}/schedules`);
     }
 
     getByIdSchedule(scheduleId) {

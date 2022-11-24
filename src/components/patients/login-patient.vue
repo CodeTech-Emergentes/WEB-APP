@@ -94,6 +94,7 @@ export default {
       try {
         this.loginData = await PatientApiService.findByEmail(this.email);
         if (this.password === this.loginData.data.password) {
+          localStorage.setItem("patient", JSON.stringify(this.loginData.data))
           await this.$router.push({name: 'home-patient', params: {id: this.loginData.data.id}})
         } else {
           console.log(this.loginData[0].email)
