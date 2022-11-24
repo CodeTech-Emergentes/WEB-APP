@@ -24,7 +24,7 @@ class PatientApiService{
     }
 
     findByEmail(email) {
-        return http.get(`/patients?email=${email}`);
+        return http.get(`/patients/email/${email}`);
     }
 
     findAppointments(id) {

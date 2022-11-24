@@ -34,7 +34,7 @@ class NutritionistsApiService {
     }
 
     findByEmail(email){
-        return http.get(`/nutritionists?email=${email}`);
+        return http.get(`/nutritionists/email/${email}`);
     }
 
     getScheduleFromNutritionist(nutritionistId) {

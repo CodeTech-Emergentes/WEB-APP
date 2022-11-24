@@ -92,15 +92,9 @@ export default {
 
     async validateLogin() {
       try {
-        const response2 = await PatientApiService.findByEmail(this.email);
-        this.loginData = response2.data;
-        console.log("evaluar esto");
-        console.log(this.loginData);
-        console.log(this.loginData[0].password);
-        console.log("la contrasena es");
-        console.log(this.password);
-        if (this.password === this.loginData[0].password) {
-          await this.$router.push({name: 'home-patient', params: {id: this.loginData[0].id}})
+        this.loginData = await PatientApiService.findByEmail(this.email);
+        if (this.password === this.loginData.data.password) {
+          await this.$router.push({name: 'home-patient', params: {id: this.loginData.data.id}})
         } else {
           console.log(this.loginData[0].email)
           alert("Incorrect Password")
